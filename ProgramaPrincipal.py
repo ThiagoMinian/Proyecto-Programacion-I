@@ -1,16 +1,16 @@
 from Emparejamientos import CrearMatrizEmparejamiento
 import random 
 
-def imprimirlista(lista):
-    for i in range(len(lista)):
-        print(lista[i],end="   ")
-    print()
+#def imprimirlista(lista):
+ #   for i in range(len(lista)):
+   #     print(lista[i],end="   ")
+   # print()
 
 def CrearListaFechas(ListaFechas,Emparej,ce):
     fila = random.randint(0,ce-1)
     columna = random.randint(0,ce-1)
     k = 0
-    while k < (ce*ce) :
+    while k < (ce*ce) - ce :
         partido = Emparej[fila][columna]
         if ListaFechas.count(partido) == 0 and partido != "X":
             ListaFechas.append(partido)
@@ -29,7 +29,7 @@ def dividir_matriz(lista):
     return lista1, lista2
 
 def mostrar_resultados(lista1, lista2, listanombres):
-    for i in range(len(lista1)-1):
+    for i in range(len(lista1)):
         eq1 = lista1[i] - 1
         eq2 = lista2[i] - 1
        
@@ -37,19 +37,16 @@ def mostrar_resultados(lista1, lista2, listanombres):
         resultado_eq1 = random.randint(60, 100)
         resultado_eq2 = random.randint(60, 100)
        
-        print(f"FECHA {i+1}: {listanombres[eq1]} {resultado_eq1} - {resultado_eq2} {listanombres[eq2]}")
+        print(f"FECHA {i+1}: {listanombres[eq1]} - {listanombres[eq2]}")
  
-# Listas de ejemplo
-
-
-#lista1 = [1, 4, 2, 1, 3, 1, 1, 3, 1, 2, 1, 4]
-#lista2 = [2, 3, 4, 3, 2, 4, 3, 2, 4, 4, 2, 3]
-
-cant = int(input("Ingrese la cantidad de equipos que participaran: "))
+cant = int(input("Ingrese la cantidad de equipos que participaran (mínimo 2): "))
 cantidad = 0
 equipos = []
+while cant < 2:
+    print("Cantida ingresada no es valida")
+    cant = int(input("Ingrese la cantidad de equipos que participaran (mínimo 2): "))
 while cantidad < cant:
-    equi = input("Ingrese las universidades que van a jugar ")
+    equi = input("Ingrese las universidades que van a jugar: ")
     if equi.isalpha()==True:
         equipos.append(equi)
         cantidad +=1
@@ -58,13 +55,13 @@ while cantidad < cant:
 listav = []
 matriz = []
 CrearMatrizEmparejamiento(matriz,cant)
-print(matriz)
+#for filas in matriz:
+    #print(filas)
 CrearListaFechas(listav, matriz,cant)
-print(listav)
 equipo1, equipo2 = dividir_matriz(listav)
-imprimirlista(listav)
-imprimirlista(equipo1)
-imprimirlista(equipo2)
+#imprimirlista(listav)
+#imprimirlista(equipo1)
+#imprimirlista(equipo2)
 mostrar_resultados(equipo1, equipo2, equipos)
 
 
