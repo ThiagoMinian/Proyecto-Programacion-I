@@ -12,5 +12,5 @@ def mostrar_resultados(lista1, lista2, listanombres):
         print(f"FECHA {i+1}: {listanombres[eq1]} - {listanombres[eq2]}")
         print()
         
-        #hola
+  
         
