@@ -53,7 +53,8 @@ def simfechas(lista1, lista2, listanombres):
     # Imprimir la tabla final con Campeón y Subcampeón
     print("Tabla final:")
     print(f"{'Equipo':<10} {'Puntos':<6} {'PJ':<3} {'V':<3} {'E':<3} {'D':<3} {'Anot Tot':<10} {'Anot Rec':<10} {'Dif Anot':<10}")
-    for i, (equipo, punto, pj, victoria, empate, derrota) in enumerate(tabla_puntos_ordenada):
+    for i in range(len(tabla_puntos_ordenada)):
+        equipo, punto, pj, victoria, empate, derrota = tabla_puntos_ordenada[i]
         anotaciones_tot = anotaciones_totales[listanombres.index(equipo)]
         anotaciones_rec = anotaciones_recibidas[listanombres.index(equipo)]
         diferencia_anot = anotaciones_tot - anotaciones_rec
