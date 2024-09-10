@@ -40,4 +40,3 @@ simfechas(listEquipos1, listEquipos2, Nombresequipos)
 
  
 
-
