@@ -3,6 +3,7 @@ from SimFechas import simfechas
 from Fechas import CrearListaFechas
 from Mostraresult import mostrar_resultados
 from ModificarEquipos import CambiarNombre
+
 def dividir_matriz(lista):
     lista1 = []
     lista2 = []
@@ -26,6 +27,8 @@ while cantidadEquipos < cant:
         cantidadEquipos +=1
     else:
         print("Tu contenido tiene un carácter no referenciado a una letra")
+    
+
 CambiarNombre(Nombresequipos)
 listafech = []
 matriz = []
