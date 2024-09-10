@@ -2,7 +2,7 @@ from Emparejamientos import CrearMatrizEmparejamiento
 from SimFechas import simfechas
 from Fechas import CrearListaFechas
 from Mostraresult import mostrar_resultados
-a
+
 def dividir_matriz(lista):
     lista1 = []
     lista2 = []
