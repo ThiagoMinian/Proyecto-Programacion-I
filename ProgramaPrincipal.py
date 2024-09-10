@@ -2,7 +2,7 @@ from Emparejamientos import CrearMatrizEmparejamiento
 from SimFechas import simfechas
 from Fechas import CrearListaFechas
 from Mostraresult import mostrar_resultados
-
+from ModificarEquipos import CambiarNombre
 def dividir_matriz(lista):
     lista1 = []
     lista2 = []
@@ -14,25 +14,26 @@ def dividir_matriz(lista):
     return lista1, lista2
 
 cant = int(input("Ingrese la cantidad de equipos que participaran (mínimo 2): "))
-cantidad = 0
-equipos = []
+cantidadEquipos = 0
+Nombresequipos = []
 while cant < 2:
-    print("Cantida ingresada no es valida")
+    print("La cantidad ingresada no es valida")
     cant = int(input("Ingrese la cantidad de equipos que participaran (mínimo 2): "))
-while cantidad < cant:
+while cantidadEquipos < cant:
     equi = input("Ingrese las universidades que van a jugar: ")
     if equi.isalpha()==True:
-        equipos.append(equi)
-        cantidad +=1
+        Nombresequipos.append(equi)
+        cantidadEquipos +=1
     else:
         print("Tu contenido tiene un carácter no referenciado a una letra")
-listav = []
+CambiarNombre(Nombresequipos)
+listafech = []
 matriz = []
 CrearMatrizEmparejamiento(matriz,cant)
-CrearListaFechas(listav, matriz,cant)
-equipo1, equipo2 = dividir_matriz(listav)
-mostrar_resultados(equipo1, equipo2, equipos)
-simfechas(equipo1, equipo2, equipos)
+CrearListaFechas(listafech, matriz,cant)
+listEquipos1, listEquipos2 = dividir_matriz(listafech)
+mostrar_resultados(listEquipos1, listEquipos2, Nombresequipos)
+simfechas(listEquipos1, listEquipos2, Nombresequipos)
 
  
 
