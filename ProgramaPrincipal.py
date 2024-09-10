@@ -1,7 +1,7 @@
 from Emparejamientos import CrearMatrizEmparejamiento
 from SimFechas import simfechas
 from Fechas import CrearListaFechas
-from Mostraresult import mostrar_resultados
+from MostrarFechas import mostrar_fechas
 from ModificarEquipos import CambiarNombre
 
 def dividir_matriz(lista):
@@ -35,7 +35,7 @@ matriz = []
 CrearMatrizEmparejamiento(matriz,cant)
 CrearListaFechas(listafech, matriz,cant)
 listEquipos1, listEquipos2 = dividir_matriz(listafech)
-mostrar_resultados(listEquipos1, listEquipos2, Nombresequipos)
+mostrar_fechas(listEquipos1, listEquipos2, Nombresequipos)
 simfechas(listEquipos1, listEquipos2, Nombresequipos)
 
  

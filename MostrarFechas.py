@@ -1,6 +1,6 @@
 import random
 
-def mostrar_resultados(lista1, lista2, listanombres):
+def mostrar_fechas(lista1, lista2, listanombres):
     for i in range(len(lista1)):
         eq1 = lista1[i] - 1
         eq2 = lista2[i] - 1
