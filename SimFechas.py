@@ -52,7 +52,7 @@ def simfechas(lista1, lista2, listanombres,fech):
                 print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3}")
             print()
         # Imprimir la tabla final con Campeón y Subcampeón
-        nombre_archivo = "Torneo" + str(fech) + ".csv"
+        nombre_archivo = "Torneo" + (fech) + ".csv"
         arch = open(nombre_archivo, "wt")
         print("Tabla final:")
         print(f"{'Equipo':<10} {'Puntos':<6} {'PJ':<3} {'V':<3} {'E':<3} {'D':<3} {'Anot Tot':<10} {'Anot Rec':<10} {'Dif Anot':<10}")
