@@ -11,6 +11,8 @@ def simfechas(lista1, lista2, listanombres,fech):
         anotaciones_totales = [0] * len(listanombres)
         anotaciones_recibidas = [0] * len(listanombres)
         partidos_jugados = [0] * len(listanombres)
+        rachas_actuales = [0] * len(listanombres)  
+        rachas_maximas = [0] * len(listanombres)
         for i in range(len(lista1)):
             eq1 = lista1[i] - 1
             eq2 = lista2[i] - 1
@@ -22,15 +24,21 @@ def simfechas(lista1, lista2, listanombres,fech):
                 puntos[eq1] += 3
                 victorias[eq1] += 1
                 derrotas[eq2] += 1
+                rachas_actuales[eq1] += 1 
+                rachas_actuales[eq2] = 0
             elif resultado_eq1 < resultado_eq2:
                 puntos[eq2] += 3
                 victorias[eq2] += 1
                 derrotas[eq1] += 1
+                rachas_actuales[eq2] += 1
+                rachas_actuales[eq1] = 0
             else:
                 puntos[eq1] += 1
                 puntos[eq2] += 1
                 empates[eq1] += 1
                 empates[eq2] += 1
+                rachas_actuales[eq1] = 0 
+                rachas_actuales[eq2] = 0
             # Actualizar anotaciones totales y recibidas
             anotaciones_totales[eq1] += resultado_eq1
             anotaciones_totales[eq2] += resultado_eq2
@@ -39,6 +47,11 @@ def simfechas(lista1, lista2, listanombres,fech):
             # Actualizar partidos jugados
             partidos_jugados[eq1] += 1
             partidos_jugados[eq2] += 1
+            
+            if rachas_actuales[eq1] > rachas_maximas[eq1]:
+                rachas_maximas[eq1] = rachas_actuales[eq1]
+            if rachas_actuales[eq2] > rachas_maximas[eq2]:
+                rachas_maximas[eq2] = rachas_actuales[eq2]
             # Imprimir el resultado del partido
             print(f"FECHA {i+1}: {listanombres[eq1]} {resultado_eq1} - {resultado_eq2} {listanombres[eq2]}")
             # Crear una lista de tuplas (equipo, puntos, partidos jugados, victorias, empates, derrotas)
@@ -51,6 +64,17 @@ def simfechas(lista1, lista2, listanombres,fech):
             for equipo, punto, pj, victoria, empate, derrota in tabla_puntos_ordenada:
                 print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3}")
             print()
+        
+        print("Racha máxima de victorias por equipo:")
+        for i in range(len(listanombres)):
+            print(f"{listanombres[i]}: {rachas_maximas[i]} victorias consecutivas")
+            # Determinar el equipo con la mayor racha
+        mayor_racha = max(rachas_maximas)
+        equipo_mayor_racha = listanombres[rachas_maximas.index(mayor_racha)]
+        print(f"El equipo con la mayor racha de victorias es {equipo_mayor_racha} con {mayor_racha} victorias consecutivas.")
+        
+        print()
+        
         # Imprimir la tabla final con Campeón y Subcampeón
         nombre_archivo = "Torneo" + (fech) + ".csv"
         arch = open(nombre_archivo, "wt")
