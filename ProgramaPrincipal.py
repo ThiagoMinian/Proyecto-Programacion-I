@@ -16,7 +16,7 @@ def dividir_matriz(lista):
 año = int(input("Ingrese el año en el que se juega el torneo"))
 mes = int(input("Ingrese el mes en el que se juega el torneo"))
 dia = int(input("Inrese el día en el que se juega el torneo"))
-fecha = dia + mes + año
+fecha = dia + "/" + mes + "/" + año
 cant = int(input("Ingrese la cantidad de equipos que participaran (mínimo 2): "))
 cantidadEquipos = 0
 Nombresequipos = []
