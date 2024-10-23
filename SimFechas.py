@@ -15,6 +15,10 @@ def simfechas(lista1, lista2, listanombres, fech, pos=0):
         rachas_actuales = [0] * len(listanombres)
         rachas_maximas = [0] * len(listanombres)
 
+        # Lista para almacenar los resultados de cada fecha
+        resultados = []
+
+        # Simular los partidos
         for i in range(len(lista1)):
             eq1 = lista1[i] - 1
             eq2 = lista2[i] - 1
@@ -53,20 +57,23 @@ def simfechas(lista1, lista2, listanombres, fech, pos=0):
             if rachas_actuales[eq2] > rachas_maximas[eq2]:
                 rachas_maximas[eq2] = rachas_actuales[eq2]
 
-            print(f"FECHA {i+1}: {listanombres[eq1]} {resultado_eq1} - {resultado_eq2} {listanombres[eq2]}")
+            # Guardar el resultado de la fecha
+            resultados.append(f"FECHA {i+1}: {listanombres[eq1]} {resultado_eq1} - {resultado_eq2} {listanombres[eq2]}")
         
+        # Imprimir resultados solo si es la última posición
         if pos == len(listanombres) - 1:
+            for resultado in resultados:
+                print(resultado)
+
             tabla_puntos = list(zip(listanombres, puntos, partidos_jugados, victorias, empates, derrotas))
             tabla_puntos_ordenada = sorted(tabla_puntos, key=lambda x: x[1], reverse=True)
 
-            # Imprimir la tabla de puntos solo una vez, al final de la recursión
             print("Tabla de puntos:")
             print(f"{'Equipo':<10} {'Puntos':<6} {'PJ':<3} {'V':<3} {'E':<3} {'D':<3}")
             for equipo, punto, pj, victoria, empate, derrota in tabla_puntos_ordenada:
                 print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3}")
             print()
 
-            # Determinar el equipo con la mayor racha
             mayor_racha = max(rachas_maximas)
             equipo_mayor_racha = listanombres[rachas_maximas.index(mayor_racha)]
             print(f"El equipo con la mayor racha de victorias es {equipo_mayor_racha} con {mayor_racha} victorias consecutivas.")
