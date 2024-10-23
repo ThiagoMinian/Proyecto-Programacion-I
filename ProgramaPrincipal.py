@@ -68,8 +68,7 @@ try:
     listEquipos1, listEquipos2 = dividir_matriz(listafech)
     mostrar_fechas(listEquipos1, listEquipos2, Nombresequipos)
     simfechas(listEquipos1, listEquipos2, Nombresequipos, fecha)
-    actualizar_historial()
-
+    
 except ValueError as msg:
     print(f"Error: {msg}")
 except IOError:
