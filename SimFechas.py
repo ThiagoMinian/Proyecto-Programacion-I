@@ -54,7 +54,7 @@ def simfechas(lista1, lista2, listanombres,fech):
         # Imprimir la tabla final con Campeón y Subcampeón
         nombre_archivo = "Torneo" + (fech) + ".csv"
         arch_tablas = open(nombre_archivo, "wt")
-        arch_campeones = open("Campeones.csv", "wt")
+        arch_campeones = open("Campeones.csv", mode = "a")
         print("Tabla final:")
         print(f"{'Equipo':<10} {'Puntos':<6} {'PJ':<3} {'V':<3} {'E':<3} {'D':<3} {'Anot Tot':<10} {'Anot Rec':<10} {'Dif Anot':<10}")
         for i in range(len(tabla_puntos_ordenada)):
@@ -64,21 +64,21 @@ def simfechas(lista1, lista2, listanombres,fech):
             diferencia_anot = anotaciones_tot - anotaciones_rec
             if i == 0:
                 titulo = "Campeón"
-                arch_campeones.write(equipo + (";") + ("Fué campeón en el torneo de la fecha") + fech + "7n")
+                arch_campeones.write(equipo + (";") + ("Fue campeon en el torneo de la fecha ") + fech + "\n")
             elif i == 1:
                 titulo = "Subcampeón"
             else:
                 titulo = ""
             print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3} {anotaciones_tot:<10} {anotaciones_rec:<10} {diferencia_anot:<10} {titulo}")
-            información = equipo + (";") + str(punto) + (";") + str(pj) + (";") + str(victoria) + (";") + str(empate) + (";") + str(derrota) + (";") + str(anotaciones_tot) + (";") + str(anotaciones_rec) + (";") + str(diferencia_anot) + "7n"
+            información = equipo + (";") + str(punto) + (";") + str(pj) + (";") + str(victoria) + (";") + str(empate) + (";") + str(derrota) + (";") + str(anotaciones_tot) + (";") + str(anotaciones_rec) + (";") + str(diferencia_anot) + "\n"
             arch_tablas.write(información)
-            arch_tablas.close
-            print("Archivo con los datos del torneo generado correctamente")
-            arch_campeones.close
-            print("Archivo con los equipos campeones actualizado")
-
+        arch_tablas.close
+        arch_campeones.close
+        print("Archivo con los datos del torneo generado correctamente")
+        print("Archivo con los equipos campeones actualizado")
         print()
     except IOError:
         print("Hubo un error al generar el archivo")
     except FileNotFoundError:
         print("No se encontró el archivo para crea o editarr")
+    
