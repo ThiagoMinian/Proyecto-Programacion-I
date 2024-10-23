@@ -40,7 +40,3 @@ CrearListaFechas(listafech, matriz,cant)
 listEquipos1, listEquipos2 = dividir_matriz(listafech)
 mostrar_fechas(listEquipos1, listEquipos2, Nombresequipos)
 simfechas(listEquipos1, listEquipos2, Nombresequipos, fecha)
-
-
- 
-
