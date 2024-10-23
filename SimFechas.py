@@ -79,33 +79,6 @@ def simfechas(lista1, lista2, listanombres, fech, pos = 0):
             for equipo, punto, pj, victoria, empate, derrota in tabla_puntos_ordenada:
                 print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3}")
             print()
-<<<<<<< Updated upstream
-        # Imprimir la tabla final con Campeón y Subcampeón
-        nombre_archivo = "Torneo" + (fech) + ".csv"
-        arch_tablas = open(nombre_archivo, "wt")
-        arch_campeones = open("Campeones.csv", mode = "a")
-        print("Tabla final:")
-        print(f"{'Equipo':<10} {'Puntos':<6} {'PJ':<3} {'V':<3} {'E':<3} {'D':<3} {'Anot Tot':<10} {'Anot Rec':<10} {'Dif Anot':<10}")
-        for i in range(len(tabla_puntos_ordenada)):
-            equipo, punto, pj, victoria, empate, derrota = tabla_puntos_ordenada[i]
-            anotaciones_tot = anotaciones_totales[listanombres.index(equipo)]
-            anotaciones_rec = anotaciones_recibidas[listanombres.index(equipo)]
-            diferencia_anot = anotaciones_tot - anotaciones_rec
-            if i == 0:
-                titulo = "Campeón"
-                arch_campeones.write(equipo + (";") + ("Fue campeon en el torneo de la fecha ") + fech + "\n")
-            elif i == 1:
-                titulo = "Subcampeón"
-            else:
-                titulo = ""
-            print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3} {anotaciones_tot:<10} {anotaciones_rec:<10} {diferencia_anot:<10} {titulo}")
-            información = equipo + (";") + str(punto) + (";") + str(pj) + (";") + str(victoria) + (";") + str(empate) + (";") + str(derrota) + (";") + str(anotaciones_tot) + (";") + str(anotaciones_rec) + (";") + str(diferencia_anot) + "\n"
-            arch_tablas.write(información)
-        arch_tablas.close
-        arch_campeones.close
-        print("Archivo con los datos del torneo generado correctamente")
-        print("Archivo con los equipos campeones actualizado")
-=======
 
         if pos == len(listanombres) - 1:
             print()
@@ -118,7 +91,6 @@ def simfechas(lista1, lista2, listanombres, fech, pos = 0):
         equipo_mayor_racha = listanombres[rachas_maximas.index(mayor_racha)]
         print(f"El equipo con la mayor racha de victorias es {equipo_mayor_racha} con {mayor_racha} victorias consecutivas.")
         
->>>>>>> Stashed changes
         print()
 
         # Imprimir la tabla final con Campeón y Subcampeón
@@ -159,9 +131,4 @@ def simfechas(lista1, lista2, listanombres, fech, pos = 0):
     except IOError:
         print("Hubo un error al generar el archivo")
     except FileNotFoundError:
-<<<<<<< Updated upstream
-        print("No se encontró el archivo para crea o editarr")
-    
-=======
         print("No se encontró el archivo para crea o editar")
->>>>>>> Stashed changes

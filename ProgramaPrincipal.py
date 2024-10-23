@@ -45,16 +45,6 @@ try:
     cantidadEquipos = 0
     Nombresequipos = []
 
-<<<<<<< Updated upstream
-CambiarNombre(Nombresequipos)
-listafech = []
-matriz = []
-CrearMatrizEmparejamiento(matriz,cant)
-CrearListaFechas(listafech, matriz,cant)
-listEquipos1, listEquipos2 = dividir_matriz(listafech)
-mostrar_fechas(listEquipos1, listEquipos2, Nombresequipos)
-simfechas(listEquipos1, listEquipos2, Nombresequipos, fecha)
-=======
     while cant < 2:
         print("La cantidad ingresada no es válida.")
         cant = int(input("Ingrese la cantidad de equipos que participaran (mínimo 2): "))
@@ -86,4 +76,4 @@ except IndexError:
     print("Error: Acceso a índice fuera de rango. Verifica que las listas y matrices estén bien formadas.")
 except TypeError:
     print("Error: Ocurrió un problema con los tipos de datos. Verifica que las funciones devuelvan los datos esperados.")
->>>>>>> Stashed changes
+
