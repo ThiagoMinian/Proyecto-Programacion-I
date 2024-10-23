@@ -107,7 +107,7 @@ def simfechas(lista1, lista2, listanombres, fech, pos = 0):
                 diferencia_anot = anotaciones_tot - anotaciones_rec
                 if i == 0:
                     titulo = "Campeón"
-                    arch_campeones.write(equipo + (";") + ("Fue campeon en el torneo de la fecha") + fech + "\n")
+                    arch_campeones.write(equipo + (";") + ("Fue campeon en el torneo de la fecha") + str(fech) + "\n")
                 elif i == 1:
                     titulo = "Subcampeón"
                 else:
@@ -116,8 +116,8 @@ def simfechas(lista1, lista2, listanombres, fech, pos = 0):
                 información = f"{equipo};{punto};{pj};{victoria};{empate};{derrota};{anotaciones_tot};{anotaciones_rec};{diferencia_anot}"
                 información = equipo + (";") + str(punto) + (";") + str(pj) + (";") + str(victoria) + (";") + str(empate) + (";") + str(derrota) + (";") + str(anotaciones_tot) + (";") + str(anotaciones_rec) + (";") + str(diferencia_anot) + "\n"
                 arch_tablas.write(información)
-            arch_tablas.close
-            arch_campeones.close
+            arch_tablas.close()
+            arch_campeones.close()
             print("Archivo con los datos del torneo generado correctamente")
             print("Archivo con los equipos campeones actualizado")
             print()
@@ -126,7 +126,7 @@ def simfechas(lista1, lista2, listanombres, fech, pos = 0):
             equipo_descendido = listanombres[puntos.index(min_puntos)]
             archivo.seek(0, os.SEEK_END)
             archivo.write(f"Equipo descendido {fech}: {equipo_descendido}\n")
-            archivo.close()
+
 
     except IOError:
         print("Hubo un error al generar el archivo")

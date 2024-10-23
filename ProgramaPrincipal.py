@@ -4,7 +4,7 @@ from Fechas import CrearListaFechas
 from MostrarFechas import mostrar_fechas
 from ModificarEquipos import CambiarNombre
 from Generar_historico import generarhistorico
-
+from Actualizar_historial import actualizar_historial
 
 def dividir_matriz(lista):
     lista1 = []
@@ -57,7 +57,9 @@ try:
         else:
             print("Tu contenido tiene un carácter no referenciado a una letra.")
 
-
+    respuesta = input("Desea generar el historico de los equipos? ")
+    if respuesta == "si":
+        generarhistorico()
     CambiarNombre(Nombresequipos)
     listafech = []
     matriz = []
@@ -66,7 +68,7 @@ try:
     listEquipos1, listEquipos2 = dividir_matriz(listafech)
     mostrar_fechas(listEquipos1, listEquipos2, Nombresequipos)
     simfechas(listEquipos1, listEquipos2, Nombresequipos, fecha)
-    generarhistorico()
+    actualizar_historial()
 
 except ValueError as msg:
     print(f"Error: {msg}")
@@ -76,4 +78,3 @@ except IndexError:
     print("Error: Acceso a índice fuera de rango. Verifica que las listas y matrices estén bien formadas.")
 except TypeError:
     print("Error: Ocurrió un problema con los tipos de datos. Verifica que las funciones devuelvan los datos esperados.")
-

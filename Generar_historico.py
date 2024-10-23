@@ -48,7 +48,6 @@ def generarhistorico():
     print("-" * 75)    
     print(f"{'Universidad':<12} {'Victorias':<12} {'Empates':<12} {'Derrotas':<12} {'Anot_tot':<12} {'Anot_rec':<12}")
     print("-" * 75)
- 
     # Imprimir datos de cada universidad con formato alineado
     for universidad, datos in estadistica.items():
-        print(f"{universidad:<12} {datos['Victorias']:<12} {datos['Empates']:<12} {datos['Derrotas']:<12} {datos['Anot_tot']:<12} {datos['Anot_rec']:<12}")  
+        print(f"{universidad:<12} {datos['Victorias']:<12} {datos['Empates']:<12} {datos['Derrotas']:<12} {datos['Anot_tot']:<12} {datos['Anot_rec']:<12}")
