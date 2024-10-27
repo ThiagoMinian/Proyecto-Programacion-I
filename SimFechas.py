@@ -1,6 +1,6 @@
 import random
 import os
-from Actualizar_historial import actualizar_historico
+from actualizar_historial import actualizar_historico
 
 def simfechas(lista1, lista2, listanombres, fech, pos=0):
 
@@ -107,7 +107,7 @@ def simfechas(lista1, lista2, listanombres, fech, pos=0):
 
         else:
             # Continuar la recursión con la siguiente posición
-            print(f"{listanombres[pos]}: {rachas_maximas[pos]} victorias consecutivas")
+            #print(f"{listanombres[pos]}: {rachas_maximas[pos]} victorias consecutivas")
             simfechas(lista1, lista2, listanombres, fech, pos + 1)
 
     except IOError:
