@@ -1,5 +1,4 @@
 import random
-import os
 from actualizar_historial import actualizar_historico
 
 def simfechas(lista1, lista2, listanombres, fech, pos=0):
@@ -59,19 +58,19 @@ def simfechas(lista1, lista2, listanombres, fech, pos=0):
 
             # Guardar el resultado de la fecha
             resultados.append(f"FECHA {i+1}: {listanombres[eq1]} {resultado_eq1} - {resultado_eq2} {listanombres[eq2]}")
-        
+
         # Imprimir resultados solo si es la última posición
         if pos == len(listanombres) - 1:
             for resultado in resultados:
                 print(resultado)
 
-            tabla_puntos = list(zip(listanombres, puntos, partidos_jugados, victorias, empates, derrotas))
-            tabla_puntos_ordenada = sorted(tabla_puntos, key=lambda x: x[1], reverse=True)
+            tabla_puntos = list(zip(listanombres, puntos, partidos_jugados, victorias, empates, derrotas, anotaciones_totales, anotaciones_recibidas))
+            tabla_puntos_ordenada = sorted(tabla_puntos, key=lambda x: (x[1], x[6] - x[7]), reverse=True)
 
             print("Tabla de puntos:")
-            print(f"{'Equipo':<10} {'Puntos':<6} {'PJ':<3} {'V':<3} {'E':<3} {'D':<3}")
-            for equipo, punto, pj, victoria, empate, derrota in tabla_puntos_ordenada:
-                print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3}")
+            print(f"{'Equipo':<10} {'Puntos':<6} {'PJ':<3} {'V':<3} {'E':<3} {'D':<3} {'Anot Tot':<10} {'Anot Rec':<10}")
+            for equipo, punto, pj, victoria, empate, derrota, anotaciones_totales, anotaciones_recibidas in tabla_puntos_ordenada:
+                print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3} {anotaciones_totales:<10} {anotaciones_recibidas:<10}")
             print()
 
             mayor_racha = max(rachas_maximas)
@@ -85,10 +84,8 @@ def simfechas(lista1, lista2, listanombres, fech, pos=0):
                     print("Tabla final:")
                     print(f"{'Equipo':<10} {'Puntos':<6} {'PJ':<3} {'V':<3} {'E':<3} {'D':<3} {'Anot Tot':<10} {'Anot Rec':<10} {'Dif Anot':<10}")
                     for i in range(len(tabla_puntos_ordenada)):
-                        equipo, punto, pj, victoria, empate, derrota = tabla_puntos_ordenada[i]
-                        anotaciones_tot = anotaciones_totales[listanombres.index(equipo)]
-                        anotaciones_rec = anotaciones_recibidas[listanombres.index(equipo)]
-                        diferencia_anot = anotaciones_tot - anotaciones_rec
+                        equipo, punto, pj, victoria, empate, derrota, anotaciones_totales, anotaciones_recibidas = tabla_puntos_ordenada[i]
+                        diferencia_anot = anotaciones_totales - anotaciones_recibidas
                         if i == 0:
                             titulo = "Campeón"
                             arch_campeones.write(equipo + ";Fue campeón en el torneo de la fecha " + str(fech) + "\n")
@@ -96,14 +93,23 @@ def simfechas(lista1, lista2, listanombres, fech, pos=0):
                             titulo = "Subcampeón"
                         else:
                             titulo = ""
-                        print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3} {anotaciones_tot:<10} {anotaciones_rec:<10} {diferencia_anot:<10} {titulo}")
-                        información = f"{equipo};{punto};{pj};{victoria};{empate};{derrota};{anotaciones_tot};{anotaciones_rec};{diferencia_anot}\n"
-                        arch_tablas.write(información)
+                        print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3} {anotaciones_totales:<10} {anotaciones_recibidas:<10} {diferencia_anot:<10} {titulo}")
+                        información_equipo = f"{equipo};{punto};{pj};{victoria};{empate};{derrota};{anotaciones_totales};{anotaciones_recibidas};{diferencia_anot}\n"
+                        arch_tablas.write(información_equipo)
+            # Después de imprimir la tabla de puntos y antes de la llamada a actualizar_historico, buscar al equipo descendido y guardarlo en un archivo
+            if pos == len(listanombres) - 1:
+
+                equipo_descendido = tabla_puntos_ordenada[-1][0]  #el último equipo es el descendido
+                print("el equipo descendido es: ", equipo_descendido)
+                with open("descendido.csv", mode="a") as arch_descendido:
+                    arch_descendido.write(f"{equipo_descendido};{fech}\n")
+
 
             actualizar_historico(nombre_archivo)
             print("Archivo con los datos del torneo generado correctamente")
             print("Archivo con los equipos campeones actualizado")
             print("Archivo Historico actualizado correctamente")
+            print("Archivo con los equipos descendidos actualizado correctamente")
 
         else:
             # Continuar la recursión con la siguiente posición
