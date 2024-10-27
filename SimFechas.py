@@ -1,6 +1,6 @@
 import random
 import os
-from Actualizar_historial import actualizar_historial
+from Actualizar_historial import actualizar_historico
 
 def simfechas(lista1, lista2, listanombres, fech, pos=0):
 
@@ -100,8 +100,10 @@ def simfechas(lista1, lista2, listanombres, fech, pos=0):
                         información = f"{equipo};{punto};{pj};{victoria};{empate};{derrota};{anotaciones_tot};{anotaciones_rec};{diferencia_anot}\n"
                         arch_tablas.write(información)
 
+            actualizar_historico(nombre_archivo)
             print("Archivo con los datos del torneo generado correctamente")
             print("Archivo con los equipos campeones actualizado")
+            print("Archivo Historico actualizado correctamente")
 
         else:
             # Continuar la recursión con la siguiente posición

@@ -37,8 +37,6 @@ def generarhistorico():
    
     try:
         archivo = open(r"Historico.csv" ,mode = "wt")
-        archivo.write("Tabla Historica de Equipos\n")
-        archivo.write("Universidad, victorias, Empates, derrotas, Anot_tot, Anot_rec \n")
         for universidad, datos in estadistica.items():
                 archivo.write(f"{universidad},{datos['Victorias']},{datos['Empates']},{datos['Derrotas']},{datos['Anot_tot']},{datos['Anot_rec']}\n")
     except IOError as msg:

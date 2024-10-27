@@ -3,8 +3,7 @@ from SimFechas import simfechas
 from Fechas import CrearListaFechas
 from MostrarFechas import mostrar_fechas
 from ModificarEquipos import CambiarNombre
-from Generar_historico import generarhistorico
-from Actualizar_historial import actualizar_historial
+from generar_historico import generarhistorico
 
 def dividir_matriz(lista):
     lista1 = []

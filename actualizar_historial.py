@@ -1,42 +1,36 @@
-def actualizar_historial(nombre):
-    with open("Historico.csv", "at") as arch_hist:  # Abrimos el archivo en modo lectura y escritura
-        arch_tabla = open(nombre, "rt")  # Abrimos el archivo de la tabla para lectura
- 
-        for fila in arch_tabla:
+def actualizar_historico(nombre):
+    # leemos el archivo histórico
+    with open("Historico.csv", "rt") as arch_hist:
+        registros = arch_hist.readlines()
+
+    # se ee el archivo de torneo
+    with open(nombre, "rt") as arch_torn:
+        datos_torneos = arch_torn.readlines()
+
+    # se reescribe el archivo historico
+    with open("Historico.csv", "wt") as arch_hist:
+        for fila in datos_torneos:
             datos = fila.strip().split(";")
             equipo = datos[0].upper()
             victorias = int(datos[3])
             empates = int(datos[4])
             derrotas = int(datos[5])
-            anotacionestot = int(datos[6])
-            anotacionesR = int(datos[7])
- 
-            # Leer el archivo histórico línea por línea
-            while True:
-                posicion_actual = arch_hist.tell()  # Guardamos la posición actual
-                linea = arch_hist.readline()  # Leemos la línea actual
- 
-                if not linea:  # Si no hay más líneas, salimos del bucle
-                    break
- 
-                info = linea.strip().split(",")
-                equipoH = info[0]
-                print(equipoH)
- 
-                if equipo == equipoH:  # Si encontramos el equipo
-                    victoriasH = str(int(info[1]) + victorias)
-                    empatesH = str(int(info[2]) + empates)
-                    derrotasH = str(int(info[3]) + derrotas)
-                    anotacionestotH = str(int(info[4]) + anotacionestot)
-                    anotacionesRH = str(int(info[5]) + anotacionesR)
- 
-                    # Crear la nueva línea para el equipo
-                    nueva_linea = f"{equipo},{victoriasH},{empatesH},{derrotasH},{anotacionestotH},{anotacionesRH}\n"
- 
-                    # Usamos seek para mover el cursor a la posición actual
-                    arch_hist.seek(posicion_actual)
-                    # Sobrescribimos la línea con la nueva información
-                    arch_hist.write(nueva_linea)
-                    break  # Salimos del bucle al actualizar
- 
-        arch_tabla.close()  # Cerramos el archivo de la tabla
+            anot_tot = int(datos[6])
+            anot_rec = int(datos[7])
+            
+            for i, linea in enumerate(registros):
+                informacion = linea.strip().split(",")
+                equipoH = informacion[0]
+                
+                if equipo == equipoH:
+                    informacion[1] = str(int(informacion[1]) + victorias)
+                    informacion[2] = str(int(informacion[2]) + empates)
+                    informacion[3] = str(int(informacion[3]) + derrotas)
+                    informacion[4] = str(int(informacion[4]) + anot_tot)
+                    informacion[5] = str(int(informacion[5]) + anot_rec)
+                    
+                    nuevos_datos = informacion[0] + "," + informacion[1] + "," + informacion[2] + "," + informacion[3] + "," + informacion[4] + "," + informacion[5] + "\n"
+                    registros[i] = nuevos_datos
+                    print("Actualizando registro con los siguientes datos:", registros[i])
+
+        arch_hist.writelines(registros)
