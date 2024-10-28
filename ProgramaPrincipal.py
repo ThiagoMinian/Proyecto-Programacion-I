@@ -30,6 +30,8 @@ def validar_fecha(año, mes, dia):
         raise ValueError(f"El día {dia} no es válido para el mes {mes}.")
 
 try:
+    print("Bienvenido a Universities Basketball League!! \n")
+
     año = int(input("Ingrese el año en el que se juega el torneo (1950-2024): "))
     validar_fecha(año, 1, 1)
 

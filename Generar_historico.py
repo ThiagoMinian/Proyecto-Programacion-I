@@ -25,7 +25,7 @@ def generarhistorico():
         "UADE": datosuade,
         "UCA": datosuca,
         "UTN": datosutn,
-        "USEMA": datosusema,
+        "UCEMA": datosusema,
         "UAI": datosuai,
         "UP": datosup,
         "UNLAM": datosunlam
