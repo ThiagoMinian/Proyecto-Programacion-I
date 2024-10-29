@@ -4,8 +4,8 @@ def generardatos():
    
     facultad = {valor: random.randint(50, 200) for valor in ["Victorias", "Empates", "Derrotas", "Anot_tot", "Anot_rec" ]}
    
-    facultad["Anot_tot"] * 30
-    facultad["Anot_rec"] * 30 #Para que tengan mas coherencia la cantidad de puntos
+    facultad["Anot_tot"] = facultad["Anot_tot"] * 30
+    facultad["Anot_rec"] = facultad["Anot_rec"] * 30 #Para que tengan mas coherencia la cantidad de puntos
    
     return facultad
  
