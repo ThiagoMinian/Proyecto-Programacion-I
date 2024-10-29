@@ -67,11 +67,11 @@ def simfechas(lista1, lista2, listanombres, fech, pos=0):
             tabla_puntos = list(zip(listanombres, puntos, partidos_jugados, victorias, empates, derrotas, anotaciones_totales, anotaciones_recibidas))
             tabla_puntos_ordenada = sorted(tabla_puntos, key=lambda x: (x[1], x[6] - x[7]), reverse=True)
 
-            print("Tabla de puntos:")
-            print(f"{'Equipo':<10} {'Puntos':<6} {'PJ':<3} {'V':<3} {'E':<3} {'D':<3} {'Anot Tot':<10} {'Anot Rec':<10}")
-            for equipo, punto, pj, victoria, empate, derrota, anotaciones_totales, anotaciones_recibidas in tabla_puntos_ordenada:
-                print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3} {anotaciones_totales:<10} {anotaciones_recibidas:<10}")
-            print()
+           # print("Tabla de puntos:")
+           # print(f"{'Equipo':<10} {'Puntos':<6} {'PJ':<3} {'V':<3} {'E':<3} {'D':<3} {'Anot Tot':<10} {'Anot Rec':<10}")
+           # for equipo, punto, pj, victoria, empate, derrota, anotaciones_totales, anotaciones_recibidas in tabla_puntos_ordenada:
+            #    print(f"{equipo:<10} {punto:<6} {pj:<3} {victoria:<3} {empate:<3} {derrota:<3} {anotaciones_totales:<10} {anotaciones_recibidas:<10}")
+            #print() 
 
             mayor_racha = max(rachas_maximas)
             equipo_mayor_racha = listanombres[rachas_maximas.index(mayor_racha)]
