@@ -117,6 +117,6 @@ def simfechas(lista1, lista2, listanombres, fech, pos=0):
             simfechas(lista1, lista2, listanombres, fech, pos + 1)
 
     except IOError:
-        print("Hubo un error al generar el archivo")
+        print("Hubo un error al generar el archivo.")
     except FileNotFoundError:
-        print("No se encontró el archivo para crear o editar")
+        print("No se encontró el archivo para crear o editar.")
