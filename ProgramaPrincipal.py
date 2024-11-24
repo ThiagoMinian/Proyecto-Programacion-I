@@ -59,7 +59,7 @@ try:
             print("Tu contenido tiene un carácter no referenciado a una letra.")
 
     respuesta = input("Desea generar el historico de los equipos? ")
-    if respuesta == "si":
+    if respuesta.upper() == "SI":
         generarhistorico()
     CambiarNombre(Nombresequipos)
     listafech = []
